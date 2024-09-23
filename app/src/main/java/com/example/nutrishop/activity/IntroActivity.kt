@@ -11,7 +11,7 @@ import com.example.nutrishop.MainActivity
 import com.example.nutrishop.R
 import com.example.nutrishop.databinding.ActivityIntroBinding
 
-class IntroActivity : AppCompatActivity() {
+class IntroActivity : BaseActivity(){
     private lateinit var binding:ActivityIntroBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

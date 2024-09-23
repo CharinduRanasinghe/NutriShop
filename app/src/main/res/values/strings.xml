@@ -4,4 +4,7 @@
     <string name="welcome">Welcome to</string>
     <string name="intro_btn">Get Started</string>
     <string name="logo">Logo</string>
+    <string name="menu_loader"><![CDATA[>]]></string>
+    <string name="categories">Categories</string>
+    <string name="featured_products">Featured Products</string>
 </resources>
