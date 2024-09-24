@@ -7,4 +7,7 @@
     <string name="menu_loader"><![CDATA[>]]></string>
     <string name="categories">Categories</string>
     <string name="featured_products">Featured Products</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
 </resources>
