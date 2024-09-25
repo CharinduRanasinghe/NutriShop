@@ -3,11 +3,13 @@ package com.example.nutrishop.activity
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import com.example.nutrishop.Adapter.CatAdapter
+import com.example.nutrishop.Adapter.FeaturedAdapter
 import com.example.nutrishop.Model.SliderModel
 import com.example.nutrishop.Adapter.SliderAdapter
 import com.example.nutrishop.ViewModel.MainViewModel
@@ -25,6 +27,7 @@ class MainActivity : BaseActivity() {
 
         initBanner()
         initCategory()
+        initFeatured()
     }
 
     private fun initBanner() {
@@ -64,5 +67,15 @@ class MainActivity : BaseActivity() {
             binding.progressBarCategory.visibility = View.GONE
         })
         viewModel.loadCategory()
+    }
+
+    private fun initFeatured() {
+        binding.progressBarProducts.visibility = View.VISIBLE
+        viewModel.featured.observe(this, Observer {
+            binding.viewFeatured.layoutManager = GridLayoutManager(this@MainActivity,2)
+            binding.viewFeatured.adapter = FeaturedAdapter(it)
+            binding.progressBarProducts.visibility = View.GONE
+        })
+        viewModel.loadFeatured()
     }
 }

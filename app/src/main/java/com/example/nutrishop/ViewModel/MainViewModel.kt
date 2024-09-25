@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.nutrishop.Model.CategoriesModel
+import com.example.nutrishop.Model.ItemModel
 import com.example.nutrishop.Model.SliderModel
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -21,9 +22,11 @@ class MainViewModel():ViewModel() {
 
     private val _banner = MutableLiveData<List<SliderModel>>()
     private val _categories = MutableLiveData<MutableList<CategoriesModel>>()
+    private val _featured = MutableLiveData<MutableList<ItemModel>>()
 
 
     val categories: LiveData<MutableList<CategoriesModel>> = _categories
+    val featured: LiveData<MutableList<ItemModel>> = _featured
     val banners: LiveData<List<SliderModel>> = _banner
 
 
@@ -62,6 +65,28 @@ class MainViewModel():ViewModel() {
                     }
                 }
                 _categories.value = lists
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
+    }
+
+    fun loadFeatured() {
+        val Ref = firebaseDatabase.getReference("Items")
+        Ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val lists = mutableListOf<ItemModel>()
+                for (childSnapshot in snapshot.children) {
+                    val list = childSnapshot.getValue(ItemModel::class.java)
+                    if (list != null) {
+                        lists.add(list)
+                    }
+                }
+                _featured.value = lists
 
             }
 
