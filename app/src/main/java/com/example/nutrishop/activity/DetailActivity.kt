@@ -3,6 +3,7 @@ package com.example.nutrishop.activity
 import android.os.Bundle
 
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.nutrishop.Adapter.DetailsAdapter
 import com.example.nutrishop.Model.ItemModel
 import com.example.nutrishop.R
@@ -44,6 +45,10 @@ class DetailActivity : BaseActivity() {
         binding.priceTxt.text = "$"+ item.price
         binding.ratingTxt.text = "${item.rating} Rating"
         setupClickListeners()
+
+        Glide.with(this)
+            .load(item.picUrl)
+            .into(binding.pic)
     }
 
     private fun setupClickListeners() {

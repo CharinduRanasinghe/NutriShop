@@ -14,20 +14,39 @@ data class ItemModel(
     var nutrients: MutableList<Nutrient> = mutableListOf()
 
 ):Parcelable{
-    constructor(parcel: Parcel):this(
+    constructor(parcel: Parcel) : this(
         parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.readString().toString(),
         parcel.readDouble(),
-        parcel.readDouble()
+        parcel.readDouble(),
+        nutrients = mutableListOf<Nutrient>().apply {
+            parcel.readList(this, Nutrient::class.java.classLoader)
+        }
     )
 
+
     override fun describeContents(): Int {
-        TODO("Not yet implemented")
+        return 0
     }
 
     override fun writeToParcel(dest: Parcel, flags: Int) {
-        TODO("Not yet implemented")
+        dest.writeString(title)
+        dest.writeString(description)
+        dest.writeString(picUrl)
+        dest.writeDouble(price)
+        dest.writeDouble(rating)
+        dest.writeList(nutrients)
+    }
+
+    companion object CREATOR : Parcelable.Creator<ItemModel> {
+        override fun createFromParcel(parcel: Parcel): ItemModel {
+            return ItemModel(parcel)
+        }
+
+        override fun newArray(size: Int): Array<ItemModel?> {
+            return arrayOfNulls(size)
+        }
     }
 }
 

@@ -1,6 +1,7 @@
 package com.example.nutrishop.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.example.nutrishop.Model.ItemModel
 import com.bumptech.glide.request.RequestOptions
+import com.example.nutrishop.activity.DetailActivity
 import com.example.nutrishop.databinding.ViewholderFeaturedBinding
 
 class FeaturedAdapter(val items: MutableList<ItemModel>) :
@@ -35,9 +37,11 @@ class FeaturedAdapter(val items: MutableList<ItemModel>) :
             .apply(requestOptions)
             .into(holder.binding.pic)
 
- //       holder.itemView.setOnClickListener {
- //           val intent = Intent(holder.itemView.context, )
- //       }
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, DetailActivity::class.java)
+            intent.putExtra("object", items[position])
+            holder.itemView.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int = items.size
