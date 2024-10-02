@@ -12,7 +12,8 @@ import com.example.nutrishop.databinding.ViewholderDetailsBinding
 
 class DetailsAdapter(val items: MutableList<DetailsModel>) :
     RecyclerView.Adapter<DetailsAdapter.ViewHolder>() {
-    private var context: Context? = null
+    private lateinit var context: Context
+
 
 
     class ViewHolder(val binding: ViewholderDetailsBinding) :
@@ -29,7 +30,7 @@ class DetailsAdapter(val items: MutableList<DetailsModel>) :
         holder.binding.nutrientTxt.text = items[position].nutrient
         holder.binding.amountTxt.text = items[position].amount
 
-        val requestOptions = RequestOptions().transform(CenterCrop())
+
 
 
 

@@ -154,7 +154,7 @@
                     android:text="Add to Cart" />
 
                 <ImageButton
-                    android:id="@+id/carBtn"
+                    android:id="@+id/cartBtn"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@color/Green2"
