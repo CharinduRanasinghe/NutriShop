@@ -69,6 +69,7 @@
 
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/nutList"
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_marginTop="16dp"

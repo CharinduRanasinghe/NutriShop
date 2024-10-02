@@ -5,12 +5,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.request.RequestOptions
-import com.example.nutrishop.Model.DetailsModel
+import com.example.nutrishop.Model.Nutrient
 import com.example.nutrishop.databinding.ViewholderDetailsBinding
 
-class DetailsAdapter(val items: MutableList<DetailsModel>) :
+class DetailsAdapter(val items: MutableList<Nutrient>) :
     RecyclerView.Adapter<DetailsAdapter.ViewHolder>() {
     private lateinit var context: Context
 
@@ -27,10 +25,9 @@ class DetailsAdapter(val items: MutableList<DetailsModel>) :
     }
 
     override fun onBindViewHolder(holder: DetailsAdapter.ViewHolder, position: Int) {
-        holder.binding.nutrientTxt.text = items[position].nutrient
-        holder.binding.amountTxt.text = items[position].amount
-
-
+        val nutrient = items[position]
+        holder.binding.nutrientTxt.text = nutrient.name
+        holder.binding.amountTxt.text = nutrient.amount
 
 
 

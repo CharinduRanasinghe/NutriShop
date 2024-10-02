@@ -1,6 +1,5 @@
 package com.example.nutrishop.Model
 
-import java.time.temporal.TemporalAmount
 
 data class ItemModel(
     var title: String = "",
@@ -9,8 +8,7 @@ data class ItemModel(
     var price: Double = 0.0,
     var numberInCart: Int = 0,
     var rating: Double = 0.0,
-    var nutrients: MutableList<DetailsModel> = mutableListOf()
-
-
+    var nutrients: MutableList<Nutrient> = mutableListOf()
 
     )
+

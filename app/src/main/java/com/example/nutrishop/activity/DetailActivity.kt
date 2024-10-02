@@ -1,12 +1,10 @@
 package com.example.nutrishop.activity
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.nutrishop.Adapter.DetailsAdapter
 import com.example.nutrishop.Model.ItemModel
-import com.example.nutrishop.Model.SliderModel
 import com.example.nutrishop.R
 import com.example.nutrishop.databinding.ActivityDetailBinding
 import com.example.project1762.Helper.ManagmentCart
@@ -31,27 +29,32 @@ class DetailActivity : BaseActivity() {
     }
 
     private fun initLists() {
-        val nutList=ArrayList<String>()
-        for (nutrient in item.nutrients){
-            nutList.add(nutrient.toString())
-        }
+
+        binding.nutList.adapter = DetailsAdapter(item.nutrients)
+        binding.nutList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
     }
 
 
+
     private fun getBundle() {
-        item = intent.getParcelableExtra("object")!!
+        item = intent.getParcelableExtra("object") ?: return // Safely unwrap the parcelable item
 
         binding.titleTxt.text = item.title
         binding.descriptionTxt.text = item.description
-        binding.priceTxt.text = "$" + item.price
+        binding.priceTxt.text = "$"+ item.price
         binding.ratingTxt.text = "${item.rating} Rating"
+        setupClickListeners()
+    }
+
+    private fun setupClickListeners() {
         binding.addToCartBtn.setOnClickListener {
             item.numberInCart = numberOrder
             managmentCart.insertFood(item)
         }
         binding.backBtn.setOnClickListener { finish() }
+        // Assuming there's functionality for cartBtn
         binding.cartBtn.setOnClickListener {
-
+            // Handle cart button click
         }
     }
 }
