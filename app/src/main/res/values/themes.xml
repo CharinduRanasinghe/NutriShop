@@ -8,6 +8,7 @@
         <item name="android:windowTranslucentStatus">false</item>
         <item name="android:fitsSystemWindows">true</item>
         <item name="android:windowTranslucentNavigation">false</item>
+        <item name="fontFamily">@font/custom_font</item>
     </style>
 
 
