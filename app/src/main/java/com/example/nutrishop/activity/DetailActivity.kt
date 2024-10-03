@@ -1,5 +1,7 @@
 package com.example.nutrishop.activity
 
+import ManagmentCart
+import android.content.Intent
 import android.os.Bundle
 
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -8,7 +10,7 @@ import com.example.nutrishop.Adapter.DetailsAdapter
 import com.example.nutrishop.Model.ItemModel
 import com.example.nutrishop.R
 import com.example.nutrishop.databinding.ActivityDetailBinding
-import com.example.project1762.Helper.ManagmentCart
+
 
 class DetailActivity : BaseActivity() {
     private lateinit var binding: ActivityDetailBinding
@@ -59,7 +61,7 @@ class DetailActivity : BaseActivity() {
         binding.backBtn.setOnClickListener { finish() }
         // Assuming there's functionality for cartBtn
         binding.cartBtn.setOnClickListener {
-            // Handle cart button click
+            startActivity(Intent(this@DetailActivity, CartActivity::class.java))
         }
     }
 }
