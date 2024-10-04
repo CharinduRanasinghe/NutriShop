@@ -72,8 +72,8 @@ class MainActivity : BaseActivity() {
 
     private fun initBottomMenu() {
         binding.cartBtn.setOnClickListener { startActivity(Intent(this@MainActivity, CartActivity::class.java)) }
-        binding.filterBtn.setOnClickListener { startActivity(Intent(this@MainActivity, FilterActivity::class.java))
-        }
+        binding.filterBtn.setOnClickListener { startActivity(Intent(this@MainActivity, FilterActivity::class.java)) }
+        binding.userBtn.setOnClickListener { startActivity(Intent(this@MainActivity, ProfileActivity::class.java)) }
     }
 
     private fun initBanner() {

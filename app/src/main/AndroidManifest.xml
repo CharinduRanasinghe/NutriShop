@@ -60,6 +60,11 @@
         <activity
             android:name=".activity.BaseActivity"
             android:exported="false" />
+        <activity
+            android:name=".activity.ProfileActivity"
+            android:exported="false"
+            android:theme="@style/Theme.NutriShop"/>
+
     </application>
 
 </manifest>
