@@ -59,7 +59,7 @@ class DetailActivity : BaseActivity() {
             managmentCart.insertFood(item)
         }
         binding.backBtn.setOnClickListener { finish() }
-        // Assuming there's functionality for cartBtn
+
         binding.cartBtn.setOnClickListener {
             startActivity(Intent(this@DetailActivity, CartActivity::class.java))
         }
