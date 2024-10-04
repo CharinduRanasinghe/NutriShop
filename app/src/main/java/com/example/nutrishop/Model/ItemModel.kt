@@ -11,7 +11,7 @@ data class ItemModel(
     var price: Double = 0.0,
     var rating: Double = 0.0,
     var numberInCart: Int = 0,
-    var nutrients: MutableList<Nutrient> = mutableListOf()
+    var details: MutableList<Nutrient> = mutableListOf()
 
 ):Parcelable{
     constructor(parcel: Parcel) : this(
@@ -20,7 +20,7 @@ data class ItemModel(
         parcel.readString().toString(),
         parcel.readDouble(),
         parcel.readDouble(),
-        nutrients = mutableListOf<Nutrient>().apply {
+        details = mutableListOf<Nutrient>().apply {
             parcel.readList(this, Nutrient::class.java.classLoader)
         }
     )
@@ -36,7 +36,7 @@ data class ItemModel(
         dest.writeString(picUrl)
         dest.writeDouble(price)
         dest.writeDouble(rating)
-        dest.writeList(nutrients)
+        dest.writeList(details)
     }
 
     companion object CREATOR : Parcelable.Creator<ItemModel> {

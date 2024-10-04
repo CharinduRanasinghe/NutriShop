@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.nutrishop.Model.Nutrient
 import com.example.nutrishop.databinding.ViewholderDetailsBinding
 
@@ -26,7 +25,7 @@ class DetailsAdapter(val items: MutableList<Nutrient>) :
 
     override fun onBindViewHolder(holder: DetailsAdapter.ViewHolder, position: Int) {
         val nutrient = items[position]
-        holder.binding.nutrientTxt.text = nutrient.name
+        holder.binding.nutrientTxt.text = nutrient.nutrient
         holder.binding.amountTxt.text = nutrient.amount
 
 

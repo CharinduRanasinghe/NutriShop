@@ -33,7 +33,7 @@ class DetailActivity : BaseActivity() {
 
     private fun initLists() {
 
-        binding.nutList.adapter = DetailsAdapter(item.nutrients)
+        binding.nutList.adapter = DetailsAdapter(item.details)
         binding.nutList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
     }
 
